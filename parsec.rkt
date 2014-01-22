@@ -520,15 +520,14 @@
         (let loop ([ps ps] [res '()])
           (cond
            [(null? ps)
-            (let ([r1 (car res)])
-                (values (car r1) (cadr r1)))]
+            (values (car res) (cadr res))]
            [else
             (letv ([(t r) (apply-check (car ps) toks stk ctx)])
               (cond
                [(not t)
                 (values #f #f)]
                [else
-                (loop (cdr ps) (cons (list t r) res))]))]))))))
+                (loop (cdr ps) (list t r))]))]))))))
 
 
 
